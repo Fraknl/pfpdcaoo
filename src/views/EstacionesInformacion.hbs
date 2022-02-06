@@ -1,0 +1,177 @@
+<meta charset="utf-8"> 
+<title>Editar información de estación</title>
+<link rel="stylesheet" type="text/css" href="/css/main.css">
+<!--<script src="plotly.min.js" ></script>-->
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script src="/js/client.js" ></script>
+
+
+<body>  
+    {{#if info}}
+    <div class="col-md-12 p-4">
+        <div class="card">
+            <div class="card-header text-center">
+                <h3 style="font-family: sans-serif;">Detalles de la estacion {{estacion.nombre_estacion}}</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4 text-center">
+                        {{#if datosEstacion.nombre_foto}}
+                        <img src="/images/estaciones/{{datosEstacion.nombre_foto}}" 
+                        width="200px" height="400px" style="border: 1px solid; padding: 1px">
+                        {{else}}
+                        <img src="/images/estaciones/logoEstacion.png" 
+                        width="200px" height="400px" style="border: 1px solid; padding: 1px">
+                        {{/if}}
+                    </div>
+                    <div class="col-md-7 text-center" >
+                        <div class="card" style="margin-bottom: 20px">
+                            <div class="card-header">
+                                Detalles
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 text-center p-3">
+                                    <span style="padding-right: 30px"><b>Identificador:</b> {{datosEstacion.id_estacion}}</span>
+                                    <span style="padding-right: 30px"><b>Código:</b> {{datosEstacion.codigo_estacion}}</span>
+                                    <span style="padding: 3px"><b>Nombre:</b> {{datosEstacion.nombre_estacion}}</span>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="card" style="margin-bottom: 20px;">
+                            <div class="card-header">
+                                Caracteristicas Técnicas
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 text-center p-3">
+                                    <label for="codigo"><b>N° conectores:</b> {{datosEstacion.cant_conectores}}</label><br>
+                                    <label for="codigo"><b>Potencia Nominal: </b> {{datosEstacion.potencia_nominal}}</label><br>
+                                    <label for="codigo"><b>Potencia Maxima:  </b>{{datosEstacion.potencia_maxima}}</label><br>
+                                    <label for="codigo"><b>Voltaje Nominal:  </b>{{datosEstacion.voltage_nominal}}</label><br>
+                                </div>
+                                <div class="col-md-6 text-center p-3">
+                                    
+                                    <label for="codigo"><b>Voltaje Maximo:   </b>{{datosEstacion.voltage_maximo}}</label><br>
+                                    <label for="codigo"><b>Corriente Nominal:</b> {{datosEstacion.corriente_nominal}}</label><br>
+                                    <label for="codigo"><b>Corriente Maxima: </b> {{datosEstacion.corriente_maxima}}</label><br>
+                                    <label for="codigo"><b>Cargas Simultaneas: </b> {{datosEstacion.cargas_simultaneas}}</label><br>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="submits">
+                            <a type="button" class="btn btn-success" name="volver" href="/home/estaciones/informacion">
+                            <em class="fa fa-arrow-left"></em> Volver</a>
+                            <a type="button" class="btn btn-info" name="volver" href="/home/estaciones/editar">
+                            <em class="fa fa-pencil"></em> Editar</a>
+                            <a type="button" class="btn btn-warning" name="volver" 
+                            href="/home/estaciones/transacciones/{{datosEstacion.id_estacion}}">
+                            <em class="fa fa-pencil"></em> Historial de Cargas</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{else if transacciones}}
+    <div class="col-md-12 p-4">
+        {{#if datosTransacciones}}
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <h2 class="col-md-11">Transacciones registradas</h2>
+                    <a type="button" class="btn btn-success pull-left col-md-1" name="volver" href="/home/estaciones/info/{{id_estacion}}">
+                    <em class="fa fa-arrow-left"></em> Volver</a>
+
+                </div
+            </div>
+            <div class="card-body">
+                <table class="table text-center">    
+                    <thead>
+                        <tr>
+                            <th>Id transacción</th>
+                            <th>Código RFID</th>
+                            <th>Hora inicio</th>
+                            <th>Hora fin</th>
+                            <th>Energía inicio [Wh]</th>
+                            <th>Energía fin [Wh]</th>
+                            <th>Energía cons. [mWh]</th>
+                            <th>Estado trans.</th>
+                            <th>Razón</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                
+                
+                    <tbody>
+                        {{#each datosTransacciones}}
+                            <tr>
+                                <td>{{id_transaccion}}</td>
+                                <td>{{codigo_rfid}}</td>
+                                <td>{{hora_inicio}}</td>
+                                <td>{{hora_fin}}</td>
+                                <td>{{energia_inicio}}</td>
+                                <td>{{energia_fin}}</td>
+                                <td>{{energia_consumida}}</td>
+                                <td>{{estado}}</td>
+                                <td>{{razon}}</td>
+                                <td><a href="/home/transacciones/eliminar/{{id_transaccion}}" class="btn"
+                                title="eliminar"> <em class="fa fa-trash"></em></a></td>
+                            </tr>
+                            
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {{else}}
+        <div class="col-md-4 mx-auto">
+            <div class="card card-body text-center">
+                <p>Aún no se ha realizado ninguna transacción en ninguna estación</p>
+            </div>
+        </div>
+        {{/if}}
+    </div>
+
+    {{else if tiempoReal}}
+        <div class="col-md-12 p-4">
+            <h3>Aqui va el nombre de la estacion</h3>
+        </div>
+        {{#each datosConectores}}
+        <div class="card p-4">
+            <div class="card-header">
+                Conector {{id_conector}}
+            </div>
+            <div class="card-body">
+                Aqui va la grafica de carga
+                <div  id='connectorId{{id_conector}}'>
+
+                </div>
+                <!--<script>
+                    function getData(){
+                        return Math.random();
+                    }
+                    Plotly.plot('chart', [{
+                        y:[getData()],
+                        type: 'line'
+                    }])
+                    setInterval(function(){
+                        Plotly.extendTraces('chart',{y:[[getData()]]}, [0])
+                    }, 2000)
+                </script>-->
+            </div>
+        </div>
+        {{/each}}
+        <div class="col-md-12 text-right" style="padding: 1em">
+                <a style="color: #fff" href="/home/estaciones/informacion" class="btn btn-info">Volver</a> 
+        </div>
+
+    </div>
+    {{/if}}
+
+
+    
+
+</body>
+

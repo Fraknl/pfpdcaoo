@@ -1,0 +1,26 @@
+<script>  
+    function getcheckbox(){
+        const lista = [1, 2, 3, 4];
+        var cont = 0;
+        const final;
+        for (const prop in lista){
+            var p = lista[prop];
+            p = p.toString();
+            //console.log(p)
+            let tar = document.getElementById(p);
+            //console.log(tar.checked)
+            if (tar.checked==true){
+                final = p;
+                alert('Ha seleccionado la tarjeta número ' + p)
+                cont+=1;
+            }
+        }
+        if(cont==0){
+            alert('No ha seleccionado ningúna tarjeta!')
+        }else if(cont==1){
+            return final;
+        }else{
+            alert('Ha seleccionado más de una tarjeta. Por favor selecciones solo una!')
+        } 
+    }
+</script>

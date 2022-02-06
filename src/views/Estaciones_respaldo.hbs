@@ -1,0 +1,57 @@
+
+<link rel="stylesheet" href="/css/tables.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+
+<body>
+
+    {{#if datosEstacion}}
+    <div class="datatable-container">
+        <div class="hestaciones">
+            <h2>Estaciones: Información</h2>
+        </div>
+
+
+        <table class="tabla">
+            <thead>
+                <td>Identificador</td>
+                <td>Código</td>
+                <td>nombre</td>
+                <td>Ubicación</td>
+                <td>Cantidad de conectores</td>
+                <td></td>
+            </thead>
+            <tbody class="cont-tabla">
+                    {{#each datosEstacion}}
+                    <tr>
+                        
+                        <td>{{id_estacion}}</td>
+                        <td>{{codigo_estacion}}</td>
+                        <td>{{nombre_estacion}}</td>
+                        <td>{{ubicacion}}</td>
+                        <td>{{cant_conectores}}</td>
+                        <td><a href="/tarjetas/editar/{{id_tarjeta}}"><i class="material-icons">edit</i></a>
+                            <a href="/tarjetas/eliminar/{{id_tarjeta}}"><i class="material-icons">delete</i></button>
+                        </td>
+                        
+                    </tr>
+                    {{/each}}
+    {{else}}
+                    <div class="col-md-4 mx-auto">
+                        <div class="card card-body text-center">
+                            <p>No existe ninguna estación registrada en la base de datos</p>
+                            <a href="/home/estaciones/agregar">Añadir tarjeta al sistema</a>
+                        </div>
+                    </div>
+            </tbody>
+        </table>      
+    </div>
+    {{/if}}
+
+</body>
+</html>
+
+
+
+

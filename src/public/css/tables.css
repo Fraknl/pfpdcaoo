@@ -1,0 +1,281 @@
+:root{
+	--primary-color: white;
+	--secondary-color: #616873;
+	--highlight-color: #3282b8;
+
+	--dt-status-available-color: greenyellow;
+	--dt-status-away-color: lightsalmon;
+	--dt-status-offline-color: lightgray;
+
+	--dt-padding:10px;
+	--dt-padding-s:6px;
+	--dt-padding-xs:2px;
+
+	--dt-border-radius:3px;
+
+	--dt-background-color-container:#2a3338;
+	--dt-border-color:var(--secondary-color);
+	--dt-bg-color:var(--highlight-color);
+	--dt-text-color:var(--primary-color);
+	--dt-bg-active-buttom:var(--highlight-color);
+	--dt-text-color-buttom:var(--primary-color);
+	--dt-text-color-active-buttom:var(--primary-color);
+	--dt-hover-cell-color:var(--highlight-color);
+	--dt-even-row-color:var(--secondary-color);
+	--dt-focus-color:var(--highlight-color);
+	--dt-input-background:var(--secondary-color);
+	--dt-input-color:var(--primary-color);
+}
+
+
+
+#prueba2{
+    background-color: #fff;
+}
+
+
+
+.datatable-container{
+	margin: auto;
+	margin-top: 40px;
+	font-family: 'Noto Sans', sans-serif;
+	background-color: var(--dt-background-color-container);
+	border-radius: var(--dt-border-radius);
+	color: var(--dt-text-color);
+	font-size: 12px;
+	width: 98%;
+}
+
+
+.datatable-container-transacciones{
+	margin: auto;
+	margin-top: 40px;
+	font-family: 'Noto Sans', sans-serif;
+	background-color: var(--dt-background-color-container);
+	border-radius: var(--dt-border-radius);
+	color: var(--dt-text-color);
+	font-size: 12px;
+	width: 98%;
+	height: 620px;
+}
+
+.datatable-container-reservas{
+	margin: auto;
+	margin-top: 40px;
+	font-family: 'Noto Sans', sans-serif;
+	background-color: var(--dt-background-color-container);
+	border-radius: var(--dt-border-radius);
+	color: var(--dt-text-color);
+	font-size: 12px;
+	width: 100%;
+}
+
+.datatable-container-tarjetas{
+	margin: auto;
+	margin-top: 40px;
+	font-family: 'Noto Sans', sans-serif;
+	background-color: var(--dt-background-color-container);
+	border-radius: var(--dt-border-radius);
+	color: var(--dt-text-color);
+	font-size: 12px;
+	width: 98%;
+}
+
+
+
+
+
+.datatable-container .hestaciones{
+	border-bottom: solid 1px var(--dt-border-color);
+	padding: var(--dt-padding);
+	display: flex;
+	align-items: baseline;
+	width: 98%;
+}
+
+.datatable-container .hestaciones .iconos{
+	margin-left: auto; 
+	margin-right: 0;
+}
+
+.datatable-container-transacciones .hestaciones{
+	border-bottom: solid 3px var(--dt-border-color);
+	padding: var(--dt-padding);
+	width: 100%;
+	text-align: center;
+}
+
+.datatable-container-tarjetas .hestaciones{
+	border-bottom: solid 1px var(--dt-border-color);
+	padding: var(--dt-padding);
+	display: flex;
+	align-items: baseline;
+	width: 98%;
+}
+
+
+
+
+
+.datatable-container .hestaciones ul{
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: start;
+	align-items: baseline;
+	width: 98%;
+}
+
+
+
+
+
+
+
+.datatable-container .hestaciones ul li{
+	display: inline-block;
+	margin: 0 var(--dt-padding-xs);
+	align-items: baseline;
+}
+
+
+
+
+
+
+
+
+.datatable-container .hestaciones ul li button:hover{
+	background: var(--dt-bg-active-buttom);
+	color: var(--dt-text-color-active-buttom);
+}
+
+
+
+
+
+
+
+.datatable-container-transacciones .tabla{
+	border-collapse: collapse;
+	width: 100%;
+}
+
+
+
+.datatable-container-transacciones .tabla tbody{
+	display: block;
+	height: 500px;
+	overflow:auto;
+	width: 100%;
+	border-bottom: solid 3px var(--dt-border-color);
+}
+
+
+
+.datatable-container-transacciones .tabla thead, tbody, tr{
+	display: table;
+	width: 100%;
+	table-layout:fixed;
+}
+
+
+
+
+
+
+
+.datatable-container .tabla,
+.datatable-container .tabla th,
+.datatable-container .tabla td{
+	padding: var(--dt-padding) var(--dt-padding);
+}
+
+.datatable-container .tabla td{
+	overflow: hidden;
+}
+
+.datatable-container-tarjetas .tabla,
+.datatable-container-tarjetas .tabla th,
+.datatable-container-tarjetas .tabla td{
+	padding: var(--dt-padding) var(--dt-padding);
+}
+
+.datatable-container-transacciones .tabla,
+.datatable-container-transacciones .tabla th,
+.datatable-container-transacciones .tabla td{
+	padding: var(--dt-padding) var(--dt-padding);
+}
+
+
+
+.datatable-container .tabla th{
+	font-weight: bolder;
+	text-align: left;
+	border-bottom: solid 1px var(--dt-border-color);
+}
+
+.datatable-container-tarjetas .tabla th{
+	font-weight: bolder;
+	text-align: center;
+	border-bottom: solid 1px var(--dt-border-color);
+}
+
+
+.datatable-container-transacciones .tabla th{
+	font-weight: bolder;
+	border-bottom: solid 3px var(--dt-border-color);
+}
+
+
+
+
+
+.datatable-container .tabla td{
+	border-bottom: solid 1px var(--dt-border-color);
+}
+
+.datatable-container-transacciones .tabla td{
+	border-bottom: solid 1px var(--dt-border-color);
+}
+
+
+
+.datatable-container .tabla tbody tr:nth-child(even) {
+	background-color: var(--dt-even-row-color); 
+}
+
+.datatable-container .tabla tbody tr:hover{
+	background-color: var(--dt-hover-cell-color); 
+}
+
+
+.datatable-container .pie_tabla{
+	width: 100%;
+	height: 100px;
+}
+
+div#prueba{
+	position: absolute;
+	width: 100px;
+	margin-top: 400px;
+	background-color: #000;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

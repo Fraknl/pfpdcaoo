@@ -1,0 +1,50 @@
+<link rel="stylesheet" href="/css/usuario.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+<script src="/js/client.js" ></script>
+<script src="/js/main1.js" charset="utf-8"></script>
+
+<div class="container p-4">
+    <div class="row"> 
+
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h3 class="card-title text-uppercase">
+                        <div class="nombre-estacion">
+                            {{datosEstacion.v3}}
+                        </div>
+                    </h3>
+                    <div class="foto-estacion1">
+                        <img src="/images/estaciones/fe2.jpg" width="100%" height="100%">
+                    </div>
+                    <div id="ping_estacion">
+                    </div><br>
+                    <div>
+                        <div><p><b>Estado</b></p></div><div id="estado_estacion"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-8">
+            <p><b>Opciones</b></p>
+            <div class="card text-center">
+                <div class="card-body">
+                    <div>
+                        
+                        <button data-action="{{datosEstacion.ide}}RemoteStartTransaction">Iniciar Transacción Remota</button><br><br>
+                        <button data-action="{{datosEstacion.ide}}RemoteStopTransaction">Detener Transacción Remota</button><br><br>
+                        <button data-action="{{datosEstacion.ide}}GetConfiguration">Obtener configuración</button><br><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<div id="descripcion_estacion"></div>
+

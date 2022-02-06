@@ -1,0 +1,154 @@
+
+<head>
+    <link rel="stylesheet" href="/css/tables.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" 
+    crossorigin="anonymous">
+</head>
+
+
+<script type="text/javascript">
+    function confirmDelete(){
+        var contr;
+        contr=prompt('Por favor ingrese la contraseña de administración: ');
+        //var respuesta = confirm('Está seguro de que desea eliminar la estación?');
+        if (contr == 'contraadmin'){
+            return true;
+        }else{
+            return false;
+        }
+    }
+</script>
+
+
+
+  
+
+<div class="col-md-4 mx-auto">
+    <div class="card card-body text-center">
+        {{#if datosTarjeta}}
+            <a href="/home/tarjetas/agregar">Agregar nueva tarjeta</a>
+        {{else}}
+            <p>No existe ninguna estación registrada en la base de datos</p>
+            <a href="/home/tarjetas/agregar">Agregar primera tarjeta</a>
+        {{/if}}
+    </div>
+</div> 
+
+
+<body>
+    <div class="datatable-container">
+        <div class="hestaciones">
+            <h2>Tarjetas registradas</h2>
+            <div class="iconos">
+                <td><a href="/home/tarjetas/editar/{{id_tarjeta}}"><i class="material-icons">edit</i></a>
+                    <a href="/home/tarjetas/eliminar/{{id_tarjeta}}">
+                        <button type="button" class="btn" onclick="return confirmDelete()">
+                            <i class="material-icons">delete</i>
+                        </button>
+                    </a>
+                    <button id="btn_obt_ids">obtener id</button>
+                    <button id="boton">otro</button>
+                </td>
+                <input type="text" id="formulario" class="form-control my-2">
+            </div>
+        </div>
+
+
+        <table class="tabla">
+            <thead>
+                <td></td>
+                <td>Identificador de tarjeta</td>
+                <td>Código RFID</td>
+                <td>Estado</td>
+            </thead>
+            <tbody class="cont-tabla" id="lis_tar">
+                {{#each datosTarjeta}}
+                    <tr id="resultado" class="tabla_js">
+                        <td class="table-checkbox"><input type="checkbox" id="{{id_tarjeta}}"  class="ch_bo_tar"></td>
+                        <td class="idt">{{id_tarjeta}}</td>
+                        <td class="crf">{{codigo_rfid}}</td>
+                        <td class="est">{{estado}}</td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table> 
+    </div>
+</body>
+
+<script>
+    var idts = document.querySelectorAll('.tabla_js');
+    //console.log('Esto es tabla: ');
+    //console.log(idts.innerText);
+    var lista
+    var l = [];
+    //console.log('Esto es busco: ' + idts)
+    idts.forEach(item =>{
+        lista = {};
+        texto = item.innerText;
+        console.log('el texto es: ' + texto)
+        console.log(texto[3])
+        //console.log(lista)
+        l.push(lista)
+    });
+    console.log(l);
+    /*
+    forEach (const prop in idts){
+        console.log(prop)
+        console.log(idts[prop].innerText)
+    }*/
+    
+    const formulario = document.querySelector('#formulario');
+    const boton = document.querySelector('#boton');
+    const resultado  = document.querySelector('#resultado')
+    const filtrar = () => {
+        resultado.innerHTML = '';
+        console.log(formulario.value);
+        const texto = formulario.value.toLowerCase();
+        for (let producto of l){
+            console.log(producto)
+            let nombre = producto;
+            if(nombre.indexOf(texto) !== -1){
+                console.log('Algo se parece');
+                resultado.innerHTML +=`
+                <td class="table-checkbox"><input type="checkbox" id="{{id_tarjeta}}"  class="ch_bo_tar"></td>
+                <td class="idt">${id_tarjeta}</td>
+                <td class="crf">${codigo_rfid}</td>
+                <td class="est">${estado}</td>
+                `
+            }
+        }
+        if(resultado.innerHTML===''){
+            resultado.innerHTML +=`
+                <td>producto no encontrado</td>
+                `
+        }
+    }
+
+    boton.addEventListener('click', filtrar)
+</script>
+
+
+<script>
+    var lista = document.getElementById('lis_tar');
+    var checks = document.querySelectorAll('.ch_bo_tar')
+
+    btn_obt_ids.addEventListener('click', function(){
+        var final = 0;
+        checks.forEach((e)=>{
+            
+            if(e.checked==true){
+                final = e.id;
+            }
+        });
+        alert('Ha seleccionado la tarjeta ' + final)
+    })
+</script>
+
+
+</html>
+
+
+
+

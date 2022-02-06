@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"> 
+    <title>Añadir nueva estación</title>
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+    <script type="text/javascript" src="/js/funcionalidades.js"></script>
+</head>
+
+<body style="color:#fff">  
+    <!--INICIA SECCION 1 PARA AGREGAR DATOS DE ESTACION-->
+    <div class="agregarestacion" id="addStation1" style="padding:2em">
+        <h3 style="color:#fff; text-align:center; margin-bottom: 1em">PASO 1: DATOS DE LA ESTACION</h3>
+            <div class="labels">
+                <label for="codigo">Código</label><br>
+                <label for="codigo">Nombre</label><br>
+                <label for="codigo">  N° conectores</label><br>
+            </div>
+            <div class="inputs">
+                <input type="text" id="stationCode" ><br>
+                <input type="text" id="stationName"><br>
+                <input type="text" id="connectorNumber"><br>
+            </div>
+            <div class="submits">
+                <input type="submit" onclick="addStation1()" value="Siguiente"><br>
+            </div>
+            {{mensaje}}
+    </div>
+    <!--TERMINA SECCION 1 PARA AGREGAR DATOS DE ESTACION-->
+    
+    <!--INICIA SECCION 2 PARA AGREGAR DATOS DE ESTACION-->
+    <div class="agregarestacion" id="addStation2" style="display:none">
+        <p>PASO 2: ESTABLECER PRIMERA CONEXI[ON WEBSOCKET</p>
+        <!--<button onclick="seeAntValues()">Mostrar valores</button>-->
+        <div id="waitingHS" style="display: none; text-align:center">
+            <span > Esperando HandShake de estacion...</span><br>
+            <div  class="spinner-grow" role="status"></div>
+        </div>
+        <div class="text-center" style="padding:1em" display="block">
+            <button onclick="setFirstWS()" class="btn btn-success" >Si</button>
+            <button onclick="addStation2()" class="btn btn-success">No, mejor luego</button>
+            <button onclick="addStation2()" class="btn btn-success">Listo, continuar</button>
+        </div>
+        
+    </div>
+    <!--TERMINA SECCION 2 PARA AGREGAR DATOS DE ESTACION-->
+</body>
+
+
+</html>
